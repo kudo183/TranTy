@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 14 for Windows Desktop
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranTy", "TyTran\TranTy.csproj", "{275B597F-B028-4F50-881B-4B1DB019FC08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranTy", "TranTy\TranTy.csproj", "{275B597F-B028-4F50-881B-4B1DB019FC08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
