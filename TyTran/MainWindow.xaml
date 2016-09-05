@@ -1,0 +1,19 @@
+﻿<Window x:Class="TranTy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:View="clr-namespace:TranTy.View"
+        xmlns:TranTy="clr-namespace:TranTy" Title="{Binding Source={x:Static TranTy:Settings.Instance}, Path=MainWindowTitle}" Height="350" Width="525">
+    <TabControl>
+        <TabItem Header="Version">
+            <View:VersionView/>
+        </TabItem>
+        <TabItem Header="Bep">
+            <View:BepView/>
+        </TabItem>
+        <TabItem Header="LoaiChiPhi">
+            <View:LoaiChiPhiView/>
+        </TabItem>
+        <TabItem Header="ChiPhiBep" IsEnabled="{Binding  Source={x:Static TranTy:Settings.Instance}, Path=IsSelectedVersion}">
+            <View:ChiPhiBepView/>
+        </TabItem>
+    </TabControl>
+</Window>
