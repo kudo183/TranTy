@@ -37,7 +37,7 @@ namespace TranTy
                 if (_currentVersion != null)
                     return string.Format("{0} ({1})", _currentVersion.Ten, _currentVersion.GhiChu);
 
-                return "Select Version to enable all function.";
+                return TextManager.Text_MainWindow_Title;
             }
         }
 

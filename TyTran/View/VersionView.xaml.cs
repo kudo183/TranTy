@@ -15,6 +15,13 @@ namespace TranTy.View
         public VersionView()
         {
             InitializeComponent();
+
+            var designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
+            if (designTime == true)
+            {
+                return;
+            }
+
             Loaded += VersionView_Loaded;
             Unloaded += VersionView_Unloaded;
 
@@ -30,12 +37,7 @@ namespace TranTy.View
         private void VersionView_Loaded(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("VersionView Loaded");
-            var designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
-            if (designTime == true)
-            {
-                return;
-            }
-
+            
             ViewModel.Load();
 
             DataContext = ViewModel;

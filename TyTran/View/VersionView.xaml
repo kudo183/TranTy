@@ -3,17 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:TranTy="clr-namespace:TranTy"
              xmlns:SimpleDataGrid="clr-namespace:SimpleDataGrid;assembly=SimpleDataGrid" mc:Ignorable="d" 
              d:DesignHeight="300">
     <SimpleDataGrid:EditableGridView x:Name="gridView" Button.Click="EditableGridView_Click">
         <SimpleDataGrid:EditableGridView.Columns>
-            <DataGridTextColumn Width="100" Header="Ten" Binding="{Binding Ten}"/>
-            <DataGridTextColumn Width="100" Header="GhiChu" Binding="{Binding GhiChu}"/>
-            <DataGridTextColumn Header="NgayTao" IsReadOnly="True" Binding="{Binding NgayTaoLocal}"/>
-            <DataGridTextColumn Header="NgayTaoUtc" IsReadOnly="True" Binding="{Binding NgayTaoUtc}"/>
+            <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_Ten}" Binding="{Binding Ten}"/>
+            <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_GhiChu}" Binding="{Binding GhiChu}"/>
+            <DataGridTextColumn  Header="{x:Static TranTy:TextManager.Text_VersionView_Column_NgayTao}" IsReadOnly="True" Binding="{Binding NgayTaoLocal}"/>
         </SimpleDataGrid:EditableGridView.Columns>
         <SimpleDataGrid:EditableGridView.CustomMenuItems>
-            <Button Tag="btnSet" Content="Set as selected version" Margin="5"/>
+            <Button Tag="btnSet" Content="{x:Static TranTy:TextManager.Text_VersionView_Button_ChonVersion}" Margin="5"/>
         </SimpleDataGrid:EditableGridView.CustomMenuItems>
     </SimpleDataGrid:EditableGridView>
 </UserControl>
