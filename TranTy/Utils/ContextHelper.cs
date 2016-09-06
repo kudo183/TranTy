@@ -47,18 +47,15 @@ namespace TranTy.Utils
         public static PagingResult<TDto> Load<TDto, TEntity>(QueryExpression qe, IQueryable<TEntity> includedQuery)
             where TDto : class, IDto<TEntity>, new()
             where TEntity : class
-        {
-            const int pageSize = 5;
-
+        {            
             int pageCount;
-            var resultQuery = QueryExpression.AddQueryExpression(includedQuery, qe, pageSize, out pageCount);
+            var resultQuery = QueryExpression.AddQueryExpression(includedQuery, qe, Settings.Instance.PageSize, out pageCount);
 
             var result = new PagingResult<TDto>
-                             {
-                                 PageIndex = qe.PageIndex,
-                                 PageCount = pageCount,
-                                 Data = new List<TDto>()
-                             };
+            {
+                PageCount = pageCount,
+                Data = new List<TDto>()
+            };
 
             foreach (var entity in resultQuery)
             {

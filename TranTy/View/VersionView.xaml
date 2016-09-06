@@ -10,7 +10,7 @@
         <SimpleDataGrid:EditableGridView.Columns>
             <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_Ten}" Binding="{Binding Ten}"/>
             <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_GhiChu}" Binding="{Binding GhiChu}"/>
-            <DataGridTextColumn  Header="{x:Static TranTy:TextManager.Text_VersionView_Column_NgayTao}" IsReadOnly="True" Binding="{Binding NgayTaoLocal}"/>
+            <DataGridTextColumn Header="{x:Static TranTy:TextManager.Text_VersionView_Column_NgayTao}" IsReadOnly="True" Binding="{Binding NgayTaoLocal}"/>
         </SimpleDataGrid:EditableGridView.Columns>
         <SimpleDataGrid:EditableGridView.CustomMenuItems>
             <Button Tag="btnSet" Content="{x:Static TranTy:TextManager.Text_VersionView_Button_ChonVersion}" Margin="5"/>

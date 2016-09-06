@@ -45,6 +45,20 @@ namespace TranTy
         {
             get { return _currentVersion != null; }
         }
+        
+        private int _pageSize = 20;
+        public int PageSize
+        {
+            get { return _pageSize; }
+            set
+            {
+                if (_pageSize == value)
+                    return;
+
+                _pageSize = value;
+                OnPropertyChanged("PageSize");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

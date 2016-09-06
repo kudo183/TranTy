@@ -14,25 +14,58 @@ namespace TranTy.ViewModel
         private readonly List<VersionDto> _removedEntitties = new List<VersionDto>();
         private readonly List<VersionDto> _addedEntitties = new List<VersionDto>();
 
-        public void Load()
+        public VersionViewModel()
         {
-            var dataSource = ContextHelper.Load<VersionDto, Version>();
-
-            if (Entities != null)
-            {
-                Entities.CollectionChanged -= Entitties_CollectionChanged;
-            }
-
-            Entities = new ObservableCollection<VersionDto>(dataSource);
-            _removedEntitties.Clear();
-            _addedEntitties.Clear();
+            Entities = new ObservableCollection<VersionDto>();
             PagerViewModel = new PagerViewModel()
             {
                 IsEnablePaging = true,
                 CurrentPageIndex = 1,
-                ItemCount = 3,
-                PageCount = 5
+                ItemCount = 0,
+                PageCount = 1
             };
+        }
+
+        public void Load()
+        {
+            Entities.CollectionChanged -= Entitties_CollectionChanged;
+            PagerViewModel.PropertyChanged -= PagerViewModel_PropertyChanged;
+
+            Entities.Clear();
+            _removedEntitties.Clear();
+            _addedEntitties.Clear();
+
+            if (PagerViewModel.IsEnablePaging == true)
+            {
+                var qe = new QueryBuilder.QueryExpression();
+                qe.PageIndex = PagerViewModel.CurrentPageIndex;
+
+                qe.OrderOptions.Add(new QueryBuilder.OrderByExpression.OrderOption()
+                {
+                    IsAscending = false,
+                    PropertyPath = "NgayTaoUtc"
+                });
+                var result = ContextHelper.Load<VersionDto, Version>(qe, ContextHelper.CreateContext().Versions);
+
+                foreach (var dto in result.Data)
+                {
+                    Entities.Add(dto);
+                }
+
+                PagerViewModel.ItemCount = Entities.Count;
+                PagerViewModel.PageCount = result.PageCount;
+            }
+            else
+            {
+                var result = ContextHelper.Load<VersionDto, Version>();
+
+                foreach (var dto in result)
+                {
+                    Entities.Add(dto);
+                }
+                PagerViewModel.ItemCount = Entities.Count;
+                PagerViewModel.PageCount = 1;
+            }
 
             PagerViewModel.PropertyChanged += PagerViewModel_PropertyChanged;
             Entities.CollectionChanged += Entitties_CollectionChanged;
@@ -50,9 +83,11 @@ namespace TranTy.ViewModel
             {
                 case "CurrentPageIndex":
                     Console.WriteLine("CurrentPageIndex: " + PagerViewModel.CurrentPageIndex);
+                    Load();
                     break;
                 case "IsEnablePaging":
                     Console.WriteLine("IsEnablePaging: " + PagerViewModel.IsEnablePaging);
+                    Load();
                     break;
             }
         }
@@ -60,6 +95,7 @@ namespace TranTy.ViewModel
         public void Save()
         {
             ContextHelper.Save(_addedEntitties, _removedEntitties, Entities);
+            Load();
         }
 
         void Entitties_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

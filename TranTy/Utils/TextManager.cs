@@ -9,7 +9,7 @@ namespace TranTy
         public const string EN = "en";
         public const string KR = "kr";
 
-        private static string _languageCode = EN;
+        private static string _languageCode = VN;
         public static string LanguageCode
         {
             get { return _languageCode; }
