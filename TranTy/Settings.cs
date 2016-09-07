@@ -14,7 +14,7 @@ namespace TranTy
             get { return _instance; }
         }
 
-        private VersionDto _currentVersion;
+        private VersionDto _currentVersion = new VersionDto() { Ma = 1, Ten = "version 1", GhiChu = "test" };
         public VersionDto CurrentVersion
         {
             get { return _currentVersion; }
@@ -45,7 +45,7 @@ namespace TranTy
         {
             get { return _currentVersion != null; }
         }
-        
+
         private int _pageSize = 20;
         public int PageSize
         {
@@ -57,6 +57,20 @@ namespace TranTy
 
                 _pageSize = value;
                 OnPropertyChanged("PageSize");
+            }
+        }
+
+        private double _fontSize = 16;
+        public double FontSize
+        {
+            get { return _fontSize; }
+            set
+            {
+                if (_fontSize == value)
+                    return;
+
+                _fontSize = value;
+                OnPropertyChanged("FontSize");
             }
         }
 

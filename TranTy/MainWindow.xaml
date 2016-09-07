@@ -1,7 +1,9 @@
 ﻿<Window x:Class="TranTy.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:View="clr-namespace:TranTy.View"
-        xmlns:TranTy="clr-namespace:TranTy" Title="{Binding Source={x:Static TranTy:Settings.Instance}, Path=MainWindowTitle}">
+        xmlns:TranTy="clr-namespace:TranTy"
+        Title="{Binding Source={x:Static TranTy:Settings.Instance}, Path=MainWindowTitle}"
+        FontSize="{Binding Source={x:Static TranTy:Settings.Instance}, Path=FontSize}">
     <TabControl>
         <TabItem Header="{x:Static TranTy:TextManager.Text_MainWindow_TabItemHeader_Version}">
             <View:VersionView/>
