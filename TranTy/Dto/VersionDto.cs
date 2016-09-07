@@ -62,12 +62,12 @@ namespace TranTy.Dto
         public Version ToEntity()
         {
             return new Version()
-                       {
-                           Ma = Ma,
-                           Ten = Ten,
-                           NgayTaoUtc = NgayTaoUtc,
-                           GhiChu = GhiChu
-                       };
+            {
+                Ma = Ma,
+                Ten = Ten,
+                NgayTaoUtc = NgayTaoUtc,
+                GhiChu = GhiChu
+            };
         }
 
         #endregion

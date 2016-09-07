@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TranTy.Entity;
+using TranTy.ViewModel;
 
 namespace TranTy.View
 {
@@ -21,48 +22,58 @@ namespace TranTy.View
     /// </summary>
     public partial class BepView : UserControl
     {
+        public BepViewModel ViewModel { get; set; }
         public BepView()
         {
             InitializeComponent();
-            Loaded += VersionView_Loaded;
-            Unloaded += BepView_Unloaded;
-        }
 
-        void BepView_Unloaded(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("BepView Unloaded");
-        }
-
-        void VersionView_Loaded(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("BepView Loaded");
             var designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
             if (designTime == true)
             {
                 return;
             }
 
-            var context = new TranTyContext();
-            var sb = new StringBuilder();
-            foreach (var bep in context.Beps)
-            {
-                sb.AppendLine(string.Format("{0} - {1} - {2}", bep.Ma, bep.Ten, bep.NgayTaoUtc));
-            }
-            txt.Text = sb.ToString();
+            Loaded += VersionView_Loaded;
+            Unloaded += VersionView_Unloaded;
+
+            ViewModel = new BepViewModel();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void VersionView_Unloaded(object sender, RoutedEventArgs e)
         {
-            var context = new TranTyContext();
-            var b = new Bep() { Ten = "bep 1", NgayTaoUtc = DateTime.UtcNow };
-            context.Beps.Add(b);
-            context.SaveChanges();
-            var sb = new StringBuilder();
-            foreach (var bep in context.Beps)
+            Console.WriteLine("VersionView Unloaded");
+            ViewModel.Unload();
+        }
+
+        private void VersionView_Loaded(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("VersionView Loaded");
+
+            ViewModel.Load();
+
+            DataContext = ViewModel;
+        }
+
+        private void EditableGridView_Click(object sender, RoutedEventArgs e)
+        {
+            var button = e.OriginalSource as Button;
+            if (button == null)
+                return;
+
+            if (button.Tag == null)
+                return;
+
+            var buttonName = button.Tag.ToString();
+            switch (buttonName)
             {
-                sb.AppendLine(string.Format("{0} - {1} - {2}", bep.Ma, bep.Ten, bep.NgayTaoUtc));
+                case "btnSave":
+                    Console.WriteLine("Save");
+                    ViewModel.Save();
+                    break;
+                case "btnCancel":
+                    Console.WriteLine("Cancel");
+                    break;
             }
-            txt.Text = sb.ToString();
         }
     }
 }

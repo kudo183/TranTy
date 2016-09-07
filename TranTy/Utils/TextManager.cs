@@ -27,8 +27,19 @@ namespace TranTy
         public const string VersionView_Column_Ten = "VersionView_Column_Ten";
         public const string VersionView_Column_GhiChu = "VersionView_Column_GhiChu";
         public const string VersionView_Column_NgayTao = "VersionView_Column_NgayTao";
-
         public const string VersionView_Button_ChonVersion = "VersionView_Button_ChonVersion";
+
+        public const string BepView_Column_Ten = "BepView_Column_Ten";
+        public const string BepView_Column_NgayTao = "BepView_Column_NgayTao";
+
+        public const string LoaiChiPhiView_Column_Ten = "LoaiChiPhiView_Column_Ten";
+        public const string LoaiChiPhiView_Column_NgayTao = "LoaiChiPhiView_Column_NgayTao";
+                                                                       
+        public const string ChiPhiBepView_Column_Thang = "ChiPhiBepView_Column_Thang";
+        public const string ChiPhiBepView_Column_Nam = "ChiPhiBepView_Column_Nam";
+        public const string ChiPhiBepView_Column_Bep = "ChiPhiBepView_Column_Bep";
+        public const string ChiPhiBepView_Column_LoaiChiPhi = "ChiPhiBepView_Column_LoaiChiPhi";
+        public const string ChiPhiBepView_Column_ChiPhi = "ChiPhiBepView_Column_ChiPhi";
         #endregion
 
         #region text property
@@ -42,6 +53,18 @@ namespace TranTy
         public static string Text_VersionView_Column_GhiChu { get { return GetText(VersionView_Column_GhiChu); } }
         public static string Text_VersionView_Column_NgayTao { get { return GetText(VersionView_Column_NgayTao); } }
         public static string Text_VersionView_Button_ChonVersion { get { return GetText(VersionView_Button_ChonVersion); } }
+
+        public static string Text_BepView_Column_Ten { get { return GetText(BepView_Column_Ten); } }
+        public static string Text_BepView_Column_NgayTao { get { return GetText(BepView_Column_NgayTao); } }
+
+        public static string Text_LoaiChiPhiView_Column_Ten { get { return GetText(LoaiChiPhiView_Column_Ten); } }
+        public static string Text_LoaiChiPhiView_Column_NgayTao { get { return GetText(LoaiChiPhiView_Column_NgayTao); } }
+
+        public static string Text_ChiPhiBepView_Column_Thang { get { return GetText(ChiPhiBepView_Column_Thang); } }
+        public static string Text_ChiPhiBepView_Column_Nam { get { return GetText(ChiPhiBepView_Column_Nam); } }
+        public static string Text_ChiPhiBepView_Column_Bep { get { return GetText(ChiPhiBepView_Column_Bep); } }
+        public static string Text_ChiPhiBepView_Column_LoaiChiPhi { get { return GetText(ChiPhiBepView_Column_LoaiChiPhi); } }
+        public static string Text_ChiPhiBepView_Column_ChiPhi { get { return GetText(ChiPhiBepView_Column_ChiPhi); } }
         #endregion
 
         #region define text collection
@@ -49,7 +72,7 @@ namespace TranTy
         {
             {MainWindow_Title, "chọn Version để dùng hết tính năng" },
             {MainWindow_TabItemHeader_Version, "Version" },
-            {MainWindow_TabItemHeader_Bep, "Bep" },
+            {MainWindow_TabItemHeader_Bep, "Bếp" },
             {MainWindow_TabItemHeader_LoaiChiPhi, "Loại CP" },
             {MainWindow_TabItemHeader_ChiPhiBep, "CP Bếp" },
 
@@ -57,6 +80,18 @@ namespace TranTy
             {VersionView_Column_GhiChu, "Ghi Chú" },
             {VersionView_Column_NgayTao, "Ngày Tạo" },
             {VersionView_Button_ChonVersion, "Chọn Version" },
+
+            {BepView_Column_Ten, "Tên" },
+            {BepView_Column_NgayTao, "Ngày Tạo" },
+
+            {LoaiChiPhiView_Column_Ten, "Tên" },
+            {LoaiChiPhiView_Column_NgayTao, "Ngày Tạo" },
+
+            {ChiPhiBepView_Column_Thang, "Tháng" },
+            {ChiPhiBepView_Column_Nam, "Năm" },
+            {ChiPhiBepView_Column_Bep, "Bếp" },
+            {ChiPhiBepView_Column_LoaiChiPhi, "Loại CP" },
+            {ChiPhiBepView_Column_ChiPhi, "Chi phí" },
         };
 
         private static Dictionary<string, string> _enTexts = new Dictionary<string, string>()

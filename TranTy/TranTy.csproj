@@ -86,6 +86,9 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Utils\TextManager.cs" />
     <Compile Include="Utils\ContextHelper.cs" />
+    <Compile Include="ViewModel\ChiPhiBepViewModel.cs" />
+    <Compile Include="ViewModel\BepViewModel.cs" />
+    <Compile Include="ViewModel\LoaiChiPhiViewModel.cs" />
     <Compile Include="ViewModel\VersionViewModel.cs" />
     <Compile Include="View\BepView.xaml.cs">
       <DependentUpon>BepView.xaml</DependentUpon>

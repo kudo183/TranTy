@@ -6,7 +6,7 @@ namespace TranTy.Entity
     {
         //level 0
         public DbSet<Bep> Beps { get; set; }
-        public DbSet<LoaiChiPhi> LoaChiPhis { get; set; }
+        public DbSet<LoaiChiPhi> LoaiChiPhis { get; set; }
         public DbSet<Version> Versions { get; set; }
 
         //level 1

@@ -1,17 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TranTy.Entity;
 
 namespace TranTy.Dto
 {
     public class LoaiChiPhiDto : IDto<LoaiChiPhi>
     {
+        private string _ten;
         public int Ma { get; set; }
-        public string Ten { get; set; }
+
+        public string Ten
+        {
+            get { return _ten; }
+            set
+            {
+                if (_ten == value)
+                    return;
+
+                _ten = value;
+                HasChange = true;
+            }
+        }
+
         public DateTime NgayTaoUtc { get; set; }
+        public DateTime NgayTaoLocal { get { return NgayTaoUtc.ToLocalTime(); } }
+
+        public LoaiChiPhiDto()
+        {
+            NgayTaoUtc = DateTime.UtcNow;
+        }
 
         #region Implementation of IDto<LoaiChiPhi>
 
@@ -32,11 +48,11 @@ namespace TranTy.Dto
         public LoaiChiPhi ToEntity()
         {
             return new LoaiChiPhi()
-                       {
-                           Ma = Ma,
-                           Ten = Ten,
-                           NgayTaoUtc = NgayTaoUtc
-                       };
+            {
+                Ma = Ma,
+                Ten = Ten,
+                NgayTaoUtc = NgayTaoUtc
+            };
         }
 
         #endregion

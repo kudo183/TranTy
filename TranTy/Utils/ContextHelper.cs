@@ -44,6 +44,23 @@ namespace TranTy.Utils
             }
         }
 
+        public static List<TDto> Load<TDto, TEntity>(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter)
+            where TDto : class, IDto<TEntity>, new()
+            where TEntity : class
+        {
+            using (var context = ContextHelper.CreateContext())
+            {
+                var dataSource = new List<TDto>();
+                foreach (var entity in context.Set<TEntity>().Where(filter))
+                {
+                    var dto = new TDto();
+                    dto.FromEntity(entity);
+                    dataSource.Add(dto);
+                }
+                return dataSource;
+            }
+        }
+
         public static PagingResult<TDto> Load<TDto, TEntity>(QueryExpression qe, IQueryable<TEntity> includedQuery)
             where TDto : class, IDto<TEntity>, new()
             where TEntity : class

@@ -14,8 +14,12 @@ namespace TranTy.Entity
         public int MaVersion { get; set; }
         public int MaBep { get; set; }
         public int MaLoaiChiPhi { get; set; }
+
+        [ForeignKey("MaVersion")]
         public virtual Version Version { get; set; }
+        [ForeignKey("MaBep")]
         public virtual Bep Bep { get; set; }
-        public virtual LoaiChiPhi LoaChiPhi { get; set; }
+        [ForeignKey("MaLoaiChiPhi")]
+        public virtual LoaiChiPhi LoaiChiPhi { get; set; }
     }
 }
