@@ -60,6 +60,7 @@ namespace TranTy.View
                     break;
                 case "btnCancel":
                     Console.WriteLine("Cancel");
+                    ViewModel.Load();
                     break;
             }
         }

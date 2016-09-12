@@ -34,12 +34,14 @@ namespace TranTy
 
         public const string LoaiChiPhiView_Column_Ten = "LoaiChiPhiView_Column_Ten";
         public const string LoaiChiPhiView_Column_NgayTao = "LoaiChiPhiView_Column_NgayTao";
-                                                                       
+
         public const string ChiPhiBepView_Column_Thang = "ChiPhiBepView_Column_Thang";
         public const string ChiPhiBepView_Column_Nam = "ChiPhiBepView_Column_Nam";
         public const string ChiPhiBepView_Column_Bep = "ChiPhiBepView_Column_Bep";
         public const string ChiPhiBepView_Column_LoaiChiPhi = "ChiPhiBepView_Column_LoaiChiPhi";
         public const string ChiPhiBepView_Column_ChiPhi = "ChiPhiBepView_Column_ChiPhi";
+        public const string ChiPhiBepView_Button_Import = "ChiPhiBepView_Button_Import";
+        public const string ChiPhiBepView_Msg_Import_Confirm = "ChiPhiBepView_Msg_Import_Confirm";
         #endregion
 
         #region text property
@@ -65,6 +67,8 @@ namespace TranTy
         public static string Text_ChiPhiBepView_Column_Bep { get { return GetText(ChiPhiBepView_Column_Bep); } }
         public static string Text_ChiPhiBepView_Column_LoaiChiPhi { get { return GetText(ChiPhiBepView_Column_LoaiChiPhi); } }
         public static string Text_ChiPhiBepView_Column_ChiPhi { get { return GetText(ChiPhiBepView_Column_ChiPhi); } }
+        public static string Text_ChiPhiBepView_Button_Import { get { return GetText(ChiPhiBepView_Button_Import); } }
+        public static string Text_ChiPhiBepView_Msg_Import_Confirm { get { return GetText(ChiPhiBepView_Msg_Import_Confirm); } }
         #endregion
 
         #region define text collection
@@ -92,6 +96,8 @@ namespace TranTy
             {ChiPhiBepView_Column_Bep, "Bếp" },
             {ChiPhiBepView_Column_LoaiChiPhi, "Loại CP" },
             {ChiPhiBepView_Column_ChiPhi, "Chi phí" },
+            {ChiPhiBepView_Button_Import, "Nhập từ file Excel" },
+            {ChiPhiBepView_Msg_Import_Confirm, "Dữ liệu từ file Excel sẽ ghi đè dữ liệu hiện tại\nBạn có chắc mình muốn tiếp tục không ?" },
         };
 
         private static Dictionary<string, string> _enTexts = new Dictionary<string, string>()

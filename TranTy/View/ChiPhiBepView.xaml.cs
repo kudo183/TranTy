@@ -60,6 +60,22 @@ namespace TranTy.View
                     break;
                 case "btnCancel":
                     Console.WriteLine("Cancel");
+                    ViewModel.Load();
+                    break;
+                case "btnImport":
+                    var ofd = new Microsoft.Win32.OpenFileDialog(); ofd.ShowReadOnly = true;
+                    ofd.Filter = "Excel File (*.xlsx)|*.xlsx";
+                    if (ofd.ShowDialog() == true)
+                    {
+                        if (MessageBox.Show(TextManager.Text_ChiPhiBepView_Msg_Import_Confirm, "", MessageBoxButton.YesNo)
+                            == MessageBoxResult.Yes)
+                        {
+                            var data = ExcelReadWrite.ExcelReader.Read(ofd.FileName);
+                            
+                            ViewModel.Import(data);
+                        }
+                    }
+                    Console.WriteLine("Import");
                     break;
             }
         }

@@ -29,5 +29,8 @@
                                                       ItemsSource="{Binding LoaiChiPhis}"/>
             <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_ChiPhi}" Binding="{Binding ChiPhi}"/>
         </SimpleDataGrid:EditableGridView.Columns>
+        <SimpleDataGrid:EditableGridView.CustomMenuItems>
+            <Button Tag="btnImport" Content="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Button_Import}" Margin="5"/>
+        </SimpleDataGrid:EditableGridView.CustomMenuItems>
     </SimpleDataGrid:EditableGridView>
 </UserControl>

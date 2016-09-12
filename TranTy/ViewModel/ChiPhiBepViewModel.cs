@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
 using TranTy.Dto;
 using TranTy.Entity;
 using TranTy.Utils;
@@ -116,6 +117,35 @@ namespace TranTy.ViewModel
         {
             ContextHelper.Save(_addedEntitties, _removedEntitties, Entities);
             Load();
+        }
+
+        public void Import(List<List<object>> data)
+        {
+            ContextHelper.CreateContext().Database.ExecuteSqlCommand(
+                "delete from ChiPhiBeps where MaVersion = {0}", Settings.Instance.CurrentVersion.Ma);
+            
+            Entities.Clear();
+            _addedEntitties.Clear();
+            _removedEntitties.Clear();
+
+            var beps = ContextHelper.Load<BepDto, Bep>()
+                .ToDictionary(p => p.Ten, p => p.Ma);
+            var loaiChiPhis = ContextHelper.Load<LoaiChiPhiDto, LoaiChiPhi>()
+                .ToDictionary(p => p.Ten, p => p.Ma);
+
+            foreach (var d in data)
+            {
+                Entities.Add(new ChiPhiBepDto()
+                {
+                    MaBep = beps[(string)d[0]],
+                    MaLoaiChiPhi = loaiChiPhis[(string)d[1]],
+                    Thang = (int)(double)d[2],
+                    Nam = (int)(double)d[3],
+                    ChiPhi = (long)Math.Round((double)d[4], 0)
+                });
+            }
+
+            Save();
         }
 
         void Entitties_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

@@ -61,6 +61,7 @@ namespace TranTy.View
                     break;
                 case "btnCancel":
                     Console.WriteLine("Cancel");
+                    ViewModel.Load();
                     break;
                 case "btnSet":
                     Console.WriteLine("Set");
