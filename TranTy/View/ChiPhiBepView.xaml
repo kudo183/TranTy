@@ -9,7 +9,10 @@
              d:DesignHeight="300">
     <SimpleDataGrid:EditableGridView x:Name="gridView" Button.Click="EditableGridView_Click">
         <SimpleDataGrid:EditableGridView.Columns>
-            <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_Thang}" Binding="{Binding Thang}"/>
+            <SimpleDataGrid:DataGridComboBoxColumnExt Width="100"
+                                                      Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_Thang}"
+                                                      SelectedValueBinding="{Binding Thang, UpdateSourceTrigger=PropertyChanged}"
+                                                      ItemsSource="{x:Static TranTy:Constant.Months}"/>
             <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_Nam}" Binding="{Binding Nam}"/>
             <SimpleDataGrid:DataGridComboBoxColumnExt Width="100"
                                                       Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_Bep}"
