@@ -10,8 +10,8 @@
         WindowStartupLocation="CenterScreen">
     <SimpleDataGrid:ReadOnlyGridView x:Name="gridView" Button.Click="gridView_Click">
         <SimpleDataGrid:ReadOnlyGridView.Columns>
-            <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_Ten}" Binding="{Binding Ten}"/>
-            <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_GhiChu}" Binding="{Binding GhiChu}"/>
+            <DataGridTextColumn Width="200" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_Ten}" Binding="{Binding Ten}"/>
+            <DataGridTextColumn Width="200" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_GhiChu}" Binding="{Binding GhiChu}"/>
             <DataGridTextColumn Header="{x:Static TranTy:TextManager.Text_VersionView_Column_NgayTao}" IsReadOnly="True" Binding="{Binding NgayTaoLocal}"/>
         </SimpleDataGrid:ReadOnlyGridView.Columns>
         <SimpleDataGrid:ReadOnlyGridView.CustomMenuItems>

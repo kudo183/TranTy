@@ -14,7 +14,7 @@
                                                       SelectedValueBinding="{Binding Thang, UpdateSourceTrigger=PropertyChanged}"
                                                       ItemsSource="{x:Static TranTy:Constant.Months}"/>
             <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_Nam}" Binding="{Binding Nam}"/>
-            <SimpleDataGrid:DataGridComboBoxColumnExt Width="100"
+            <SimpleDataGrid:DataGridComboBoxColumnExt Width="200"
                                                       Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_Bep}"
                                                       TextBinding="{Binding Bep.Ten, Mode=OneWay}"
                                                       DisplayMemberPath="Ten"
@@ -22,7 +22,7 @@
                                                       SelectedValueBinding="{Binding MaBep, UpdateSourceTrigger=PropertyChanged}"
                                                       SelectedItemBinding="{Binding Bep, UpdateSourceTrigger=PropertyChanged}"
                                                       ItemsSource="{Binding Beps}"/>
-            <SimpleDataGrid:DataGridComboBoxColumnExt Width="100"
+            <SimpleDataGrid:DataGridComboBoxColumnExt Width="200"
                                                       Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_LoaiChiPhi}"
                                                       TextBinding="{Binding LoaiChiPhi.Ten, Mode=OneWay}"
                                                       DisplayMemberPath="Ten"
@@ -30,7 +30,7 @@
                                                       SelectedValueBinding="{Binding MaLoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
                                                       SelectedItemBinding="{Binding LoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
                                                       ItemsSource="{Binding LoaiChiPhis}"/>
-            <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_ChiPhi}" Binding="{Binding ChiPhi}"/>
+            <DataGridTextColumn Width="150" Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_ChiPhi}" Binding="{Binding ChiPhi}"/>
         </SimpleDataGrid:EditableGridView.Columns>
         <SimpleDataGrid:EditableGridView.CustomMenuItems>
             <Button Tag="btnAddVersion" Content="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Button_ThemVersion}" Margin="5"/>
