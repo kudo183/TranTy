@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using TranTy.Dto;
 using TranTy.ViewModel;
 
 namespace TranTy.View
@@ -51,6 +52,7 @@ namespace TranTy.View
             if (button.Tag == null)
                 return;
 
+            VersionChooserWindow v;
             var buttonName = button.Tag.ToString();
             switch (buttonName)
             {
@@ -61,6 +63,17 @@ namespace TranTy.View
                 case "btnCancel":
                     Console.WriteLine("Cancel");
                     ViewModel.Load();
+                    break;
+                case "btnSet":
+                    Console.WriteLine("Set");
+                    v = new VersionChooserWindow();
+                    v.ShowDialog();
+                    if (v.IsSelected)
+                    {
+                        Settings.Instance.CurrentVersion = v.SelectedVersion as VersionDto;
+                        ViewModel.Load();
+                    }
+
                     break;
                 case "btnImportFromExcel":
                     Console.WriteLine("btnImportFromExcel");
@@ -79,11 +92,16 @@ namespace TranTy.View
                     break;
                 case "btnImportFromVersion":
                     Console.WriteLine("btnImportFromVersion");
-                    var v = new VersionChooserWindow();
+                    v = new VersionChooserWindow();
                     v.ShowDialog();
                     if (v.IsSelected)
                     {
-                        ViewModel.ImportFromVersion(v.SelectedVersion.Ma);
+                        var msg = string.Format(
+                            TextManager.Text_ChiPhiBepView_Msg_Import_FromVersion_Confirm, v.SelectedVersion.ToShortString());
+                        if (MessageBox.Show(msg, "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        {
+                            ViewModel.ImportFromVersion(v.SelectedVersion.Ma);
+                        }
                     }
                     break;
             }

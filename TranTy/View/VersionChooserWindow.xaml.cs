@@ -67,13 +67,8 @@ namespace TranTy.View
                     }
                     else
                     {
-                        var msg = string.Format(
-                            TextManager.Text_ChiPhiBepView_Msg_Import_FromVersion_Confirm, SelectedVersion.ToShortString());
-                        if (MessageBox.Show(msg, "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                        {
-                            IsSelected = true;
-                            Close();
-                        }
+                        IsSelected = true;
+                        Close();
                     }
                     break;
                 case "btnCancel":
