@@ -64,8 +64,19 @@ namespace TranTy.View
                     Console.WriteLine("Cancel");
                     ViewModel.Load();
                     break;
-                case "btnSet":
-                    Console.WriteLine("Set");
+                case "btnAddVersion":
+                    Console.WriteLine("Add Version");
+                    var q = new QuickAddVersionWindow();
+                    q.ShowDialog();
+                    if (q.IsAdded == true)
+                    {
+                        var maVersion = Settings.Instance.CurrentVersion.Ma;
+                        Settings.Instance.CurrentVersion = q.AddedVersion;
+                        ViewModel.ImportFromVersion(maVersion);
+                    }
+                    break;
+                case "btnSetVersion":
+                    Console.WriteLine("Set Version");
                     v = new VersionChooserWindow();
                     v.ShowDialog();
                     if (v.IsSelected)
@@ -73,7 +84,6 @@ namespace TranTy.View
                         Settings.Instance.CurrentVersion = v.SelectedVersion as VersionDto;
                         ViewModel.Load();
                     }
-
                     break;
                 case "btnImportFromExcel":
                     Console.WriteLine("btnImportFromExcel");

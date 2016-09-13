@@ -103,6 +103,9 @@
     <Compile Include="View\LoaiChiPhiView.xaml.cs">
       <DependentUpon>LoaiChiPhiView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\QuickAddVersionWindow.xaml.cs">
+      <DependentUpon>QuickAddVersionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\VersionChooserWindow.xaml.cs">
       <DependentUpon>VersionChooserWindow.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
     <Page Include="View\LoaiChiPhiView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\QuickAddVersionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\VersionChooserWindow.xaml">
       <SubType>Designer</SubType>

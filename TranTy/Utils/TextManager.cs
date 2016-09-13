@@ -41,6 +41,8 @@ namespace TranTy
         public const string ChiPhiBepView_Column_Bep = "ChiPhiBepView_Column_Bep";
         public const string ChiPhiBepView_Column_LoaiChiPhi = "ChiPhiBepView_Column_LoaiChiPhi";
         public const string ChiPhiBepView_Column_ChiPhi = "ChiPhiBepView_Column_ChiPhi";
+        public const string ChiPhiBepView_Button_ChonVersion = "ChiPhiBepView_Button_ChonVersion";
+        public const string ChiPhiBepView_Button_ThemVersion = "ChiPhiBepView_Button_ThemVersion";
         public const string ChiPhiBepView_Button_Import_FromExcel = "ChiPhiBepView_Button_Import_FromExcel";
         public const string ChiPhiBepView_Button_Import_FromVersion = "ChiPhiBepView_Button_Import_FromVersion";
         public const string ChiPhiBepView_Msg_Import_FromExcel_Confirm = "ChiPhiBepView_Msg_Import_FromExcel_Confirm";
@@ -73,6 +75,8 @@ namespace TranTy
         public static string Text_ChiPhiBepView_Column_Bep { get { return GetText(ChiPhiBepView_Column_Bep); } }
         public static string Text_ChiPhiBepView_Column_LoaiChiPhi { get { return GetText(ChiPhiBepView_Column_LoaiChiPhi); } }
         public static string Text_ChiPhiBepView_Column_ChiPhi { get { return GetText(ChiPhiBepView_Column_ChiPhi); } }
+        public static string Text_ChiPhiBepView_Button_ChonVersion { get { return GetText(ChiPhiBepView_Button_ChonVersion); } }
+        public static string Text_ChiPhiBepView_Button_ThemVersion { get { return GetText(ChiPhiBepView_Button_ThemVersion); } }
         public static string Text_ChiPhiBepView_Button_Import_FromExcel { get { return GetText(ChiPhiBepView_Button_Import_FromExcel); } }
         public static string Text_ChiPhiBepView_Button_Import_FromVersion { get { return GetText(ChiPhiBepView_Button_Import_FromVersion); } }
         public static string Text_ChiPhiBepView_Msg_Import_FromExcel_Confirm { get { return GetText(ChiPhiBepView_Msg_Import_FromExcel_Confirm); } }
@@ -107,6 +111,8 @@ namespace TranTy
             {ChiPhiBepView_Column_Bep, "Bếp" },
             {ChiPhiBepView_Column_LoaiChiPhi, "Loại CP" },
             {ChiPhiBepView_Column_ChiPhi, "Chi phí" },
+            {ChiPhiBepView_Button_ChonVersion, "Chọn Version" },
+            {ChiPhiBepView_Button_ThemVersion, "Thêm Version" },
             {ChiPhiBepView_Button_Import_FromExcel, "Nhập từ file Excel" },
             {ChiPhiBepView_Button_Import_FromVersion, "Nhập từ Version khác" },
             {ChiPhiBepView_Msg_Import_FromExcel_Confirm, "Dữ liệu từ file {0} sẽ ghi đè dữ liệu hiện tại\nBạn có chắc mình muốn tiếp tục không ?" },

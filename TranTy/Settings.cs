@@ -7,14 +7,19 @@ namespace TranTy
     {
         private static readonly Settings _instance = new Settings();
 
-        private Settings() { }
+        private Settings()
+        {
+#if DEBUG
+            _currentVersion = new VersionDto() { Ma = 1, Ten = "version 1", GhiChu = "test" };
+#endif
+        }
 
         public static Settings Instance
         {
             get { return _instance; }
         }
 
-        private VersionDto _currentVersion = new VersionDto() { Ma = 1, Ten = "version 1", GhiChu = "test" };
+        private VersionDto _currentVersion;
         public VersionDto CurrentVersion
         {
             get { return _currentVersion; }
