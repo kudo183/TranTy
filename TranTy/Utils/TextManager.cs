@@ -19,6 +19,7 @@ namespace TranTy
 
         #region text key
         public const string MainWindow_Title = "MainWindow_Title";
+        public const string VersionChooserWindow_Title = "VersionChooserWindow_Title";
         public const string MainWindow_TabItemHeader_Version = "MainWindow_TabItem_Version";
         public const string MainWindow_TabItemHeader_Bep = "MainWindow_TabItem_Bep";
         public const string MainWindow_TabItemHeader_LoaiChiPhi = "MainWindow_TabItem_LoaiChiPhi";
@@ -40,8 +41,11 @@ namespace TranTy
         public const string ChiPhiBepView_Column_Bep = "ChiPhiBepView_Column_Bep";
         public const string ChiPhiBepView_Column_LoaiChiPhi = "ChiPhiBepView_Column_LoaiChiPhi";
         public const string ChiPhiBepView_Column_ChiPhi = "ChiPhiBepView_Column_ChiPhi";
-        public const string ChiPhiBepView_Button_Import = "ChiPhiBepView_Button_Import";
-        public const string ChiPhiBepView_Msg_Import_Confirm = "ChiPhiBepView_Msg_Import_Confirm";
+        public const string ChiPhiBepView_Button_Import_FromExcel = "ChiPhiBepView_Button_Import_FromExcel";
+        public const string ChiPhiBepView_Button_Import_FromVersion = "ChiPhiBepView_Button_Import_FromVersion";
+        public const string ChiPhiBepView_Msg_Import_FromExcel_Confirm = "ChiPhiBepView_Msg_Import_FromExcel_Confirm";
+        public const string ChiPhiBepView_Msg_Import_FromVersion_Confirm = "ChiPhiBepView_Msg_Import_FromVersion_Confirm";
+        public const string ChiPhiBepView_Msg_Import_FromVersion_SameVersion = "ChiPhiBepView_Msg_Import_FromVersion_SameVersion";
         #endregion
 
         #region text property
@@ -50,6 +54,8 @@ namespace TranTy
         public static string Text_MainWindow_TabItemHeader_Bep { get { return GetText(MainWindow_TabItemHeader_Bep); } }
         public static string Text_MainWindow_TabItemHeader_LoaiChiPhi { get { return GetText(MainWindow_TabItemHeader_LoaiChiPhi); } }
         public static string Text_MainWindow_TabItemHeader_ChiPhiBep { get { return GetText(MainWindow_TabItemHeader_ChiPhiBep); } }
+
+        public static string Text_VersionChooserWindow_Title { get { return GetText(VersionChooserWindow_Title); } }
 
         public static string Text_VersionView_Column_Ten { get { return GetText(VersionView_Column_Ten); } }
         public static string Text_VersionView_Column_GhiChu { get { return GetText(VersionView_Column_GhiChu); } }
@@ -67,8 +73,11 @@ namespace TranTy
         public static string Text_ChiPhiBepView_Column_Bep { get { return GetText(ChiPhiBepView_Column_Bep); } }
         public static string Text_ChiPhiBepView_Column_LoaiChiPhi { get { return GetText(ChiPhiBepView_Column_LoaiChiPhi); } }
         public static string Text_ChiPhiBepView_Column_ChiPhi { get { return GetText(ChiPhiBepView_Column_ChiPhi); } }
-        public static string Text_ChiPhiBepView_Button_Import { get { return GetText(ChiPhiBepView_Button_Import); } }
-        public static string Text_ChiPhiBepView_Msg_Import_Confirm { get { return GetText(ChiPhiBepView_Msg_Import_Confirm); } }
+        public static string Text_ChiPhiBepView_Button_Import_FromExcel { get { return GetText(ChiPhiBepView_Button_Import_FromExcel); } }
+        public static string Text_ChiPhiBepView_Button_Import_FromVersion { get { return GetText(ChiPhiBepView_Button_Import_FromVersion); } }
+        public static string Text_ChiPhiBepView_Msg_Import_FromExcel_Confirm { get { return GetText(ChiPhiBepView_Msg_Import_FromExcel_Confirm); } }
+        public static string Text_ChiPhiBepView_Msg_Import_FromVersion_Confirm { get { return GetText(ChiPhiBepView_Msg_Import_FromVersion_Confirm); } }
+        public static string Text_ChiPhiBepView_Msg_Import_FromVersion_SameVersion { get { return GetText(ChiPhiBepView_Msg_Import_FromVersion_SameVersion); } }
         #endregion
 
         #region define text collection
@@ -79,6 +88,8 @@ namespace TranTy
             {MainWindow_TabItemHeader_Bep, "Bếp" },
             {MainWindow_TabItemHeader_LoaiChiPhi, "Loại CP" },
             {MainWindow_TabItemHeader_ChiPhiBep, "CP Bếp" },
+
+            {VersionChooserWindow_Title, "chọn Version để lấy dữ liệu" },
 
             {VersionView_Column_Ten, "Tên" },
             {VersionView_Column_GhiChu, "Ghi Chú" },
@@ -96,8 +107,11 @@ namespace TranTy
             {ChiPhiBepView_Column_Bep, "Bếp" },
             {ChiPhiBepView_Column_LoaiChiPhi, "Loại CP" },
             {ChiPhiBepView_Column_ChiPhi, "Chi phí" },
-            {ChiPhiBepView_Button_Import, "Nhập từ file Excel" },
-            {ChiPhiBepView_Msg_Import_Confirm, "Dữ liệu từ file Excel sẽ ghi đè dữ liệu hiện tại\nBạn có chắc mình muốn tiếp tục không ?" },
+            {ChiPhiBepView_Button_Import_FromExcel, "Nhập từ file Excel" },
+            {ChiPhiBepView_Button_Import_FromVersion, "Nhập từ Version khác" },
+            {ChiPhiBepView_Msg_Import_FromExcel_Confirm, "Dữ liệu từ file {0} sẽ ghi đè dữ liệu hiện tại\nBạn có chắc mình muốn tiếp tục không ?" },
+            {ChiPhiBepView_Msg_Import_FromVersion_Confirm, "Dữ liệu từ Version {0} sẽ ghi đè dữ liệu hiện tại\nBạn có chắc mình muốn tiếp tục không ?" },
+            {ChiPhiBepView_Msg_Import_FromVersion_SameVersion, "Version đã chọn chính là Version hiện tại, vui lòng chọn Version khác" },
         };
 
         private static Dictionary<string, string> _enTexts = new Dictionary<string, string>()

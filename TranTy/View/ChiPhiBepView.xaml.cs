@@ -62,20 +62,29 @@ namespace TranTy.View
                     Console.WriteLine("Cancel");
                     ViewModel.Load();
                     break;
-                case "btnImport":
-                    var ofd = new Microsoft.Win32.OpenFileDialog(); ofd.ShowReadOnly = true;
+                case "btnImportFromExcel":
+                    Console.WriteLine("btnImportFromExcel");
+                    var ofd = new Microsoft.Win32.OpenFileDialog();
                     ofd.Filter = "Excel File (*.xlsx)|*.xlsx";
                     if (ofd.ShowDialog() == true)
                     {
-                        if (MessageBox.Show(TextManager.Text_ChiPhiBepView_Msg_Import_Confirm, "", MessageBoxButton.YesNo)
-                            == MessageBoxResult.Yes)
+                        var msg = string.Format(TextManager.Text_ChiPhiBepView_Msg_Import_FromExcel_Confirm, ofd.FileName);
+                        if (MessageBox.Show(msg, "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                         {
                             var data = ExcelReadWrite.ExcelReader.Read(ofd.FileName);
-                            
+
                             ViewModel.Import(data);
                         }
                     }
-                    Console.WriteLine("Import");
+                    break;
+                case "btnImportFromVersion":
+                    Console.WriteLine("btnImportFromVersion");
+                    var v = new VersionChooserWindow();
+                    v.ShowDialog();
+                    if (v.IsSelected)
+                    {
+                        ViewModel.ImportFromVersion(v.SelectedVersion.Ma);
+                    }
                     break;
             }
         }

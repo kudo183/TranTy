@@ -34,9 +34,7 @@ namespace TranTy.ViewModel
             Entities.CollectionChanged -= Entitties_CollectionChanged;
             PagerViewModel.PropertyChanged -= PagerViewModel_PropertyChanged;
 
-            Entities.Clear();
-            _removedEntitties.Clear();
-            _addedEntitties.Clear();
+            ClearData();
 
             if (PagerViewModel.IsEnablePaging == true)
             {
@@ -84,6 +82,7 @@ namespace TranTy.ViewModel
                     dto.LoaiChiPhis = _loaiChiPhis;
                     Entities.Add(dto);
                 }
+
                 PagerViewModel.ItemCount = Entities.Count;
                 PagerViewModel.PageCount = 1;
             }
@@ -119,33 +118,72 @@ namespace TranTy.ViewModel
             Load();
         }
 
+        public void ImportFromVersion(int maVersion)
+        {
+            using (var context = ContextHelper.CreateContext())
+            {
+                context.Database.ExecuteSqlCommand(
+                    "delete from ChiPhiBeps where MaVersion = {0}", Settings.Instance.CurrentVersion.Ma);
+
+                ClearData();
+
+                var versions = context.ChiPhiBeps.Where(p => p.MaVersion == maVersion);
+
+                foreach (var version in versions)
+                {
+                    context.ChiPhiBeps.Add(
+                        new ChiPhiBep()
+                        {
+                            Nam = version.Nam,
+                            Thang = version.Thang,
+                            ChiPhi = version.ChiPhi,
+                            MaBep = version.MaBep,
+                            MaLoaiChiPhi = version.MaLoaiChiPhi,
+                            MaVersion = Settings.Instance.CurrentVersion.Ma
+                        }
+                    );
+                }
+
+                context.SaveChanges();
+                Load();
+            }
+        }
+
         public void Import(List<List<object>> data)
         {
-            ContextHelper.CreateContext().Database.ExecuteSqlCommand(
-                "delete from ChiPhiBeps where MaVersion = {0}", Settings.Instance.CurrentVersion.Ma);
-            
+            using (var context = ContextHelper.CreateContext())
+            {
+                context.Database.ExecuteSqlCommand(
+                    "delete from ChiPhiBeps where MaVersion = {0}", Settings.Instance.CurrentVersion.Ma);
+
+                ClearData();
+
+                var beps = context.Beps.ToDictionary(p => p.Ten, p => p.Ma);
+                var loaiChiPhis = context.LoaiChiPhis.ToDictionary(p => p.Ten, p => p.Ma);
+
+                foreach (var d in data)
+                {
+                    context.ChiPhiBeps.Add(new ChiPhiBep()
+                    {
+                        MaVersion = Settings.Instance.CurrentVersion.Ma,
+                        MaBep = beps[(string)d[0]],
+                        MaLoaiChiPhi = loaiChiPhis[(string)d[1]],
+                        Thang = (int)(double)d[2],
+                        Nam = (int)(double)d[3],
+                        ChiPhi = (long)Math.Round((double)d[4], 0)
+                    });
+                }
+
+                context.SaveChanges();
+                Load();
+            }
+        }
+
+        void ClearData()
+        {
             Entities.Clear();
             _addedEntitties.Clear();
             _removedEntitties.Clear();
-
-            var beps = ContextHelper.Load<BepDto, Bep>()
-                .ToDictionary(p => p.Ten, p => p.Ma);
-            var loaiChiPhis = ContextHelper.Load<LoaiChiPhiDto, LoaiChiPhi>()
-                .ToDictionary(p => p.Ten, p => p.Ma);
-
-            foreach (var d in data)
-            {
-                Entities.Add(new ChiPhiBepDto()
-                {
-                    MaBep = beps[(string)d[0]],
-                    MaLoaiChiPhi = loaiChiPhis[(string)d[1]],
-                    Thang = (int)(double)d[2],
-                    Nam = (int)(double)d[3],
-                    ChiPhi = (long)Math.Round((double)d[4], 0)
-                });
-            }
-
-            Save();
         }
 
         void Entitties_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

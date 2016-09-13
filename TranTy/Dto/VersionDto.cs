@@ -72,6 +72,11 @@ namespace TranTy.Dto
 
         #endregion
 
+        public string ToShortString()
+        {
+            return string.Format("{0} - {1} - {2}", Ten, GhiChu, NgayTaoUtc);
+        }
+
         public override string ToString()
         {
             return string.Format("VersionDto: {0} - {1} - {2} - {3}", Ma, Ten, GhiChu, NgayTaoUtc);

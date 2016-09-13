@@ -33,7 +33,8 @@
             <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Column_ChiPhi}" Binding="{Binding ChiPhi}"/>
         </SimpleDataGrid:EditableGridView.Columns>
         <SimpleDataGrid:EditableGridView.CustomMenuItems>
-            <Button Tag="btnImport" Content="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Button_Import}" Margin="5"/>
+            <Button Tag="btnImportFromExcel" Content="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Button_Import_FromExcel}" Margin="5"/>
+            <Button Tag="btnImportFromVersion" Content="{x:Static TranTy:TextManager.Text_ChiPhiBepView_Button_Import_FromVersion}" Margin="5"/>
         </SimpleDataGrid:EditableGridView.CustomMenuItems>
     </SimpleDataGrid:EditableGridView>
 </UserControl>

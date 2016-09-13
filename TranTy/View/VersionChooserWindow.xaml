@@ -1,0 +1,22 @@
+﻿<Window x:Class="TranTy.View.VersionChooserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:TranTy="clr-namespace:TranTy"
+        xmlns:SimpleDataGrid="clr-namespace:SimpleDataGrid;assembly=SimpleDataGrid" mc:Ignorable="d"
+        FontSize="{Binding Source={x:Static TranTy:Settings.Instance}, Path=FontSize}"
+        Title="{x:Static TranTy:TextManager.Text_VersionChooserWindow_Title}"
+        WindowStartupLocation="CenterScreen">
+    <SimpleDataGrid:ReadOnlyGridView x:Name="gridView" Button.Click="gridView_Click">
+        <SimpleDataGrid:ReadOnlyGridView.Columns>
+            <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_Ten}" Binding="{Binding Ten}"/>
+            <DataGridTextColumn Width="100" Header="{x:Static TranTy:TextManager.Text_VersionView_Column_GhiChu}" Binding="{Binding GhiChu}"/>
+            <DataGridTextColumn Header="{x:Static TranTy:TextManager.Text_VersionView_Column_NgayTao}" IsReadOnly="True" Binding="{Binding NgayTaoLocal}"/>
+        </SimpleDataGrid:ReadOnlyGridView.Columns>
+        <SimpleDataGrid:ReadOnlyGridView.CustomMenuItems>
+            <Button Tag="btnOk" Content="Ok" Width="75" Margin="5"/>
+            <Button Tag="btnCancel" Content="Cancel" Width="75" Margin="5"/>
+        </SimpleDataGrid:ReadOnlyGridView.CustomMenuItems>
+    </SimpleDataGrid:ReadOnlyGridView>
+</Window>
