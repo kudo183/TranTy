@@ -2,8 +2,13 @@
 
 namespace TranTy.Entity
 {
-    public class TranTyContext : DbContext 
+    public class TranTyContext : DbContext
     {
+        public TranTyContext() : base("name=DBConnectionString")
+        {
+
+        }
+
         //level 0
         public DbSet<Bep> Beps { get; set; }
         public DbSet<LoaiChiPhi> LoaiChiPhis { get; set; }
