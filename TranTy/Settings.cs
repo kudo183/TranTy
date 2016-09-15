@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 using TranTy.Dto;
 
 namespace TranTy
@@ -7,16 +8,33 @@ namespace TranTy
     {
         private static readonly Settings _instance = new Settings();
 
-        private Settings()
-        {
-#if DEBUG
-            _currentVersion = new VersionDto() { Ma = 1, Ten = "version 1", GhiChu = "test" };
-#endif
-        }
-
         public static Settings Instance
         {
             get { return _instance; }
+        }
+
+        public void LoadSettings()
+        {
+            var version = Utils.ContextHelper.CreateContext().Versions.FirstOrDefault(
+                p => p.Ma == Properties.Settings.Default.MaVersion);
+
+            if (version != null)
+            {
+                _currentVersion = new VersionDto();
+                _currentVersion.FromEntity(version);
+            }
+
+            _pageSize = Properties.Settings.Default.PageSize;
+            _fontSize = Properties.Settings.Default.FontSize;
+        }
+
+        public void SaveSettings()
+        {
+            Properties.Settings.Default.PageSize = _pageSize;
+            Properties.Settings.Default.FontSize = _fontSize;
+
+            Properties.Settings.Default.MaVersion = Settings.Instance.CurrentVersion.Ma;
+            Properties.Settings.Default.Save();
         }
 
         private VersionDto _currentVersion;
